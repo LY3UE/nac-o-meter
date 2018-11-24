@@ -16,13 +16,19 @@ class HomePageController extends AbstractController
       */
     public function index()
     {
-        /* $repository = $this->getDoctrine()->getRepository(Logs::class);
-         * $logs = $repository->find(1);
-         */
-        $lastMonthStats = $this->getLastMonthStats();
-        dump($lastMonthStats);
+        $repository = $this->getDoctrine()->getRepository(Logs::class);
+        $lastCallsigns = $repository->findLastCallsigns(5);
+        $lastDate = $repository->findLastDate()[1];
+        $lastMonthStats = $repository->findLastMonthStats($lastDate);
+        dump($lastDate);
+
         return $this->render('home.html.twig',array(
-          'lastMonthStats' => $lastMonthStats
+          'lastMonthStats' => $lastMonthStats,
+          'lastDate' => $lastDate,
+          'lastCallsigns' => $lastCallsigns,
+          'currentYear' => \DateTime::createFromFormat(
+            "Y-m-d", $lastDate
+            )->format('Y')
         ));
     }
 
@@ -34,18 +40,5 @@ class HomePageController extends AbstractController
       where date > (NOW() - INTERVAL 1 month)
       group by bands.bandID
       */
-      $c = $this->getDoctrine()->getManager()->getConnection();
-      $qb = $c->createQueryBuilder('l')
-        ->from('logs','l')
-        ->select('count(l.logID) as c')
-        ->leftJoin('l','bands','b','b.bandID=l.bandID')
-        ->addSelect('b.band_freq')
-        ->where('l.date > (NOW() - INTERVAL 1 month)')
-        ->groupBy('b.bandID');
-      $em = $this->getDoctrine()->getManager()->createQuery(
-        $qb->execute()->queryString
-      );
-
-      return $em;
     }
 }

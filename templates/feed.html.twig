@@ -1,15 +1,21 @@
 <div class="card">
-<div class="card-header">
-  Paskutinio turo informacija
-</div>
+
   <div class="card-body">
-    <h5 class="card-title">2018 m. lapkritis - 432 MHz</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Gautos ataskaitos</h6>
+    <h5 class="card-title">Paskutinio mėnesio LYAC informacija</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Paskutinę ataskaitą LYAC robotas gavo: </h6>
+    <p class="card-text">{{ lastDate }}</p>
+    <h6 class="card-subtitle mb-2 text-muted">Dalyvių šį mėnesį: </h6>
+    <p class="card-text">
     {% for s in lastMonthStats %}
-      {{ s }}...
+       {{ s.bandFreq }} -
+       <b>{{ s.count }}</b>{% if not loop.last %}, {% endif %}
     {% endfor %}
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <h6 class="card-subtitle mb-2 text-muted">Dalyvių ryšių žemėlapis</h5>
+    </p>
+    <h6 class="card-subtitle text-muted">Paskutiniai gauti žurnalai:</h6>
+    <p class="card-text">
+    {% for c in lastCallsigns  %}
+      {{ c.callsign }}{% if not loop.last %}, {% endif %}
+    {% endfor %}</p>
 
   </div>
 </div>
