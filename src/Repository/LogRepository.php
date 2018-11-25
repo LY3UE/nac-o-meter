@@ -59,7 +59,7 @@ class LogRepository extends ServiceEntityRepository
     }
     public function findLastCallsigns($maxres) {
         return $this->createQueryBuilder('l')
-            ->leftJoin('App\Entity\Callsigns','c','WITH','c.callsignid=l.callsignid')
+            ->leftJoin('App\Entity\Callsign','c','WITH','c.callsignid=l.callsignid')
             ->select('c.callsign')
             ->orderBy('l.date', 'DESC')
             ->setMaxResults($maxres)

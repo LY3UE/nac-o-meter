@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Callsigns
+ * Callsign
  *
  * @ORM\Table(name="callsigns", uniqueConstraints={@ORM\UniqueConstraint(name="Pcall", columns={"callsign"})})
  * @ORM\Entity
  */
-class Callsigns
+class Callsign
 {
     /**
      * @var int
