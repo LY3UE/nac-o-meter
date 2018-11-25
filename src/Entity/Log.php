@@ -9,9 +9,9 @@ use Doctrine\ORM\Mapping\ManyToOne;
  * Logs
  *
  * @ORM\Table(name="logs", indexes={@ORM\Index(name="date", columns={"date"})})
- * @ORM\Entity(repositoryClass="App\Repository\LogsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\LogRepository")
  */
-class Logs
+class Log
 {
     /**
      * @var int

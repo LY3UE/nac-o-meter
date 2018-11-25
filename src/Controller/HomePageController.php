@@ -2,7 +2,7 @@
 // src/Controller/HomePageController.php
 namespace App\Controller;
 
-use App\Entity\Logs;
+use App\Entity\Log;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +16,7 @@ class HomePageController extends AbstractController
       */
     public function index()
     {
-        $repository = $this->getDoctrine()->getRepository(Logs::class);
+        $repository = $this->getDoctrine()->getRepository(Log::class);
         $lastCallsigns = $repository->findLastCallsigns(5);
         $lastDate = $repository->findLastDate()[1];
         $lastMonthStats = $repository->findLastMonthStats($lastDate);
