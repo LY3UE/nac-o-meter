@@ -34,6 +34,4 @@ class BandsGroups
      * @ORM\Column(name="bandID", type="boolean", nullable=false, options={"comment"="Band ID"})
      */
     private $bandid;
-
-
 }

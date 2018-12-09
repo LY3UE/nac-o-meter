@@ -13,9 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomePageController extends AbstractController
 {
-     /**
-      * @Route("/", name="home")
-      */
+    /**
+     * @Route("/", name="home")
+     */
     public function index(Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Log::class);
@@ -24,36 +24,36 @@ class HomePageController extends AbstractController
         $lastMonthStats = $repository->findLastMonthStats($lastDate);
 
         $callsignSearchForm = $this->createForm(CallsignSearch::class);
-
         $callsignSearchForm->handleRequest($request);
-
-        if ($callsignSearchForm->isSubmitted() && $callsignSearchForm->isValid())
-        {
-          $data = $callsignSearchForm->getData();
-          return $this->redirectToRoute('call_search', array(
+        if ($callsignSearchForm->isSubmitted() && $callsignSearchForm->isValid()) {
+            $data = $callsignSearchForm->getData();
+            return $this->redirectToRoute(
+              'call_search',
+              array(
               'callsign' => $data['callsign']
             )
           );
         }
 
-        return $this->render('home.html.twig',array(
+        return $this->render('home.html.twig', array(
           'lastMonthStats' => $lastMonthStats,
           'lastDate' => $lastDate,
           'lastCallsigns' => $lastCallsigns,
           'callSearch' => $callsignSearchForm->createView(),
           'currentYear' => \DateTime::createFromFormat(
-            "Y-m-d", $lastDate
+            "Y-m-d",
+              $lastDate
             )->format('Y')
         ));
     }
 
     public function getLastMonthStats()
     {
-      /*
-      SELECT count(*), bands.band_freq FROM `logs`
-      left join bands on bands.bandID=logs.bandID
-      where date > (NOW() - INTERVAL 1 month)
-      group by bands.bandID
-      */
+        /*
+        SELECT count(*), bands.band_freq FROM `logs`
+        left join bands on bands.bandID=logs.bandID
+        where date > (NOW() - INTERVAL 1 month)
+        group by bands.bandID
+        */
     }
 }

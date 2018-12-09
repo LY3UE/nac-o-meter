@@ -27,6 +27,4 @@ class Callsign
      * @ORM\Column(name="callsign", type="string", length=16, nullable=false, options={"comment"="Call Sign"})
      */
     private $callsign;
-
-
 }

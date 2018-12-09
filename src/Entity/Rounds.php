@@ -41,6 +41,4 @@ class Rounds
      * @ORM\Column(name="group_bands", type="boolean", nullable=false, options={"comment"="Group of bands"})
      */
     private $groupBands;
-
-
 }

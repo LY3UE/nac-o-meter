@@ -13,7 +13,7 @@ class CallsignSearch extends AbstractType
     {
         $builder
             ->setMethod('POST')
-            ->add('callsign',TextType::class, array(
+            ->add('callsign', TextType::class, array(
                 'label' => false,
                 'attr' => array(
                     'placeholder' => 'Įveskite šaukinį',

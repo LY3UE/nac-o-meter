@@ -48,6 +48,4 @@ class Countries
      * @ORM\Column(name="MYSQLpattern", type="string", length=128, nullable=false, options={"comment"="Regular expression pattern"})
      */
     private $mysqlpattern;
-
-
 }

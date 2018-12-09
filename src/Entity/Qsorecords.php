@@ -76,6 +76,4 @@ class Qsorecords
      * @ORM\Column(name="confirm", type="boolean", nullable=true, options={"comment"="Confirm code"})
      */
     private $confirm = '0';
-
-
 }

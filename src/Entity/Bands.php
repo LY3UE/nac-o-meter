@@ -55,6 +55,4 @@ class Bands
      * @ORM\Column(name="factor", type="boolean", nullable=false, options={"comment"="Band multiplier"})
      */
     private $factor;
-
-
 }

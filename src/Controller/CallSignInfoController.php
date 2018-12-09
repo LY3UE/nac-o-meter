@@ -10,16 +10,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CallSignInfoController extends AbstractController
 {
-     /**
-      * @Route("/call/{callsign}", name="call_search")
-      */
-      public function callsignSearch($callsign)
-      {
-          $callsignSearchForm = $this->createForm(CallsignSearch::class);
+    /**
+     * @Route("/call/{callsign}", name="call_search")
+     */
+    public function callsignSearch($callsign)
+    {
+        $callsignSearchForm = $this->createForm(CallsignSearch::class);
 
-          return $this->render('callsign.html.twig',array(
+        return $this->render(
+              'callsign.html.twig',
+              array(
             'callSearch' => $callsignSearchForm->createView()
           )
         );
-      }
+    }
 }

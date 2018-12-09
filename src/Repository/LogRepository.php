@@ -57,9 +57,10 @@ class LogRepository extends ServiceEntityRepository
             )
         */
     }
-    public function findLastCallsigns($maxres) {
+    public function findLastCallsigns($maxres)
+    {
         return $this->createQueryBuilder('l')
-            ->leftJoin('App\Entity\Callsign','c','WITH','c.callsignid=l.callsignid')
+            ->leftJoin('App\Entity\Callsign', 'c', 'WITH', 'c.callsignid=l.callsignid')
             ->select('c.callsign')
             ->orderBy('l.date', 'DESC')
             ->setMaxResults($maxres)
@@ -79,9 +80,9 @@ class LogRepository extends ServiceEntityRepository
 
     public function findLastMonthStats($date)
     {
-      return $this->createQueryBuilder('l')
+        return $this->createQueryBuilder('l')
         ->select('count(l.logid) as count')
-        ->leftJoin('App\Entity\Bands','b','WITH','b.bandid=l.bandid')
+        ->leftJoin('App\Entity\Bands', 'b', 'WITH', 'b.bandid=l.bandid')
         ->addSelect('b.bandFreq')
         ->where('l.date > :since')
         ->setParameter('since', $this->subtractOneMonth($date))
@@ -90,5 +91,4 @@ class LogRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
-
 }
