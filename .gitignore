@@ -22,3 +22,5 @@
 
 
 .idea/*
+### Ignore LYAC results
+/results/
