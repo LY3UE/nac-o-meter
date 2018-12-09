@@ -12,14 +12,13 @@ class CallsignSearch extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->setMethod('GET')
-            ->setAction($options['action'])
+            ->setMethod('POST')
             ->add('callsign',TextType::class, array(
+                'label' => false,
                 'attr' => array(
                     'placeholder' => 'Įveskite šaukinį',
                     'class' => 'form-control mr-sm-2'
-                ), 
-            'label' => false))
+                )))
             ->add('save', SubmitType::class, array(
                 'label' => 'Pirmyn',
                 'attr' => array(

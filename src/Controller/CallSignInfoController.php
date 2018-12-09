@@ -2,16 +2,24 @@
 // src/Controller/LuckyController.php
 namespace App\Controller;
 
+use App\Entity\Callsign;
+use App\Form\CallsignSearch;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class CallSignInfoController
+class CallSignInfoController extends AbstractController
 {
-    public function number()
-    {
-        $number = random_int(0, 100);
+     /**
+      * @Route("/call/{callsign}", name="call_search")
+      */
+      public function callsignSearch($callsign)
+      {
+          $callsignSearchForm = $this->createForm(CallsignSearch::class);
 
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
+          return $this->render('callsign.html.twig',array(
+            'callSearch' => $callsignSearchForm->createView()
+          )
         );
-    }
+      }
 }
