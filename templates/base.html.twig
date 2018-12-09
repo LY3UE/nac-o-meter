@@ -17,7 +17,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">LYAC Pagrindinis</a>
+        <a class="navbar-brand" href="{{ path('home') }}">LYAC Pagrindinis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +29,7 @@
             <li class="nav-item"> <a class="nav-link" href="#">Ataskaitos</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#">Archyvas</a> </li>
           </ul>
-          {{ form_start(callSearch) }}
+          {{ form_start(callSearch, {action:path('home')}) }}
           {{ form_widget(callSearch, { 'attr': {'class': 'form-inline mt-2 mt-md-0'} } ) }}
           {{ form_end(callSearch) }}
         </div>
