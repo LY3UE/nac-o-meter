@@ -82,7 +82,7 @@ class LogRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('l')
         ->select('count(l.logid) as count')
-        ->leftJoin('App\Entity\Bands', 'b', 'WITH', 'b.bandid=l.bandid')
+        ->leftJoin('App\Entity\Band', 'b', 'WITH', 'b.bandid=l.bandid')
         ->addSelect('b.bandFreq')
         ->where('l.date > :since')
         ->setParameter('since', $this->subtractOneMonth($date))

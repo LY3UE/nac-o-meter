@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Qsorecords
+ * QsoRecord
  *
  * @ORM\Table(name="qsorecords", indexes={@ORM\Index(name="logID", columns={"logID"}), @ORM\Index(name="callsign", columns={"callsign"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\QsoRecordRepository")
  */
-class Qsorecords
+class QsoRecord
 {
     /**
      * @var int

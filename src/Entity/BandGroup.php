@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * BandsGroups
+ * BandGroup
  *
  * @ORM\Table(name="bands_groups")
  * @ORM\Entity
  */
-class BandsGroups
+class BandGroup
 {
     /**
      * @var bool

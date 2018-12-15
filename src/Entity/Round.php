@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rounds
+ * Round
  *
  * @ORM\Table(name="rounds", uniqueConstraints={@ORM\UniqueConstraint(name="date", columns={"date"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RoundRepository")
  */
-class Rounds
+class Round
 {
     /**
      * @var bool
@@ -41,4 +41,10 @@ class Rounds
      * @ORM\Column(name="group_bands", type="boolean", nullable=false, options={"comment"="Group of bands"})
      */
     private $groupBands;
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
 }

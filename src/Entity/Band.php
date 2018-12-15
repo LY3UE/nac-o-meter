@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="bands", uniqueConstraints={@ORM\UniqueConstraint(name="band", columns={"band"}), @ORM\UniqueConstraint(name="band_freq", columns={"band_freq"})})
  * @ORM\Entity
  */
-class Bands
+class Band
 {
     /**
      * @var bool

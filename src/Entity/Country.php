@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Countries
+ * Country
  *
  * @ORM\Table(name="countries", uniqueConstraints={@ORM\UniqueConstraint(name="code", columns={"code"})})
  * @ORM\Entity
  */
-class Countries
+class Country
 {
     /**
      * @var bool
