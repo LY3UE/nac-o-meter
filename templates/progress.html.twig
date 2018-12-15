@@ -1,0 +1,21 @@
+<div class="progress">
+      {% set sum = 0 %}
+      {% for s in lastMonthStats %}
+      {% set sum = sum + s.count %}
+      {% endfor %}
+
+      {% for s in lastMonthStats %}
+      
+      {% set barstyle = '' %}
+      {% if loop.index == 2 %}{% set barstyle = "bg-success" %}
+      {% elseif loop.index == 3 %}{% set barstyle = "bg-info" %}
+      {% elseif loop.index == 4 %}{% set barstyle = "bg-warning" %}
+      {% endif %}
+      <div class="progress-bar {{ barstyle }}" 
+          role="progressbar" 
+          style="width: {{ s.count / sum * 100 }}%" 
+          aria-valuenow="{{ s.count }}" 
+          aria-valuemin="0" aria-valuemax="100">{{ s.bandFreq }} - {{ s.count }}</div>
+        <b></b>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+  </div>

@@ -1,21 +1,42 @@
 <div class="card">
 
   <div class="card-body">
-    <h5 class="card-title">Paskutinio mėnesio LYAC informacija</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Paskutinę ataskaitą LYAC robotas gavo: </h6>
+    <h5 class="card-title">Šio mėnesio LYAC informacija</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Paskutinis LYAC turas:</h6>
     <p class="card-text">{{ lastDate }}</p>
-    <h6 class="card-subtitle mb-2 text-muted">Dalyvių šį mėnesį: </h6>
+    <h6 class="card-subtitle mb-2 text-muted">Dalyvių (ataskaitų) šį mėnesį: </h6>
     <p class="card-text">
     {% for s in lastMonthStats %}
        {{ s.bandFreq }} -
        <b>{{ s.count }}</b>{% if not loop.last %}, {% endif %}
     {% endfor %}
+
     </p>
-    <h6 class="card-subtitle text-muted">Paskutiniai gauti žurnalai:</h6>
-    <p class="card-text">
+    <h6 class="card-subtitle text-muted">Paskutiniai roboto gauti žurnalai:</h6>
+    <p class="card-text text-success">
     {% for c in lastCallsigns  %}
       {{ c.callsign }}{% if not loop.last %}, {% endif %}
     {% endfor %}</p>
 
   </div>
+</div>
+<p></p>
+<div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Negautos ataskaitos:</h5>
+
+    {% for date,nolog in logsNotReceived  %}
+      {% if nolog is not empty %}
+            <h5 class="card-title">{{ lastRounds[loop.index-1].name }}
+            <small class="card-subtitle mb-2 text-muted"> {{ date |date('Y-m-d') }} </small></h5>
+            <p class="card-text text-danger">
+            {% for call in nolog %}
+                {{ call['callsign'] }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </p>
+      {% endif %}
+    {% endfor %}</p>
+      </div>
+  {# include "progress.html.twig" #}
+
 </div>
