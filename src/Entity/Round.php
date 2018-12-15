@@ -39,6 +39,7 @@ class Round
      * @var bool
      *
      * @ORM\Column(name="group_bands", type="boolean", nullable=false, options={"comment"="Group of bands"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\BandGroup", inversedBy="group_bands")
      */
     private $groupBands;
 

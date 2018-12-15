@@ -25,6 +25,7 @@ class BandGroup
      * @var bool
      *
      * @ORM\Column(name="group_bands", type="boolean", nullable=false, options={"comment"="Group of bands"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Round", mappedBy="group_bands")
      */
     private $groupBands;
 

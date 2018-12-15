@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Message
  *
  * @ORM\Table(name="messages", indexes={@ORM\Index(name="date", columns={"date"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
  */
 class Message
 {
@@ -63,5 +63,9 @@ class Message
      */
     private $stamp = 'CURRENT_TIMESTAMP';
 
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
 
 }
