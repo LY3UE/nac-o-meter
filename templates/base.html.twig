@@ -29,7 +29,7 @@
             <li class="nav-item"> <a class="nav-link" href="#">Ataskaitos</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#">Archyvas</a> </li>
           </ul>
-          {{ form_start(callSearch, {action:path('home')}) }}
+          {{ form_start(callSearch, {action:path('call_search_handle')}) }}
           {{ form_widget(callSearch, { 'attr': {'class': 'form-inline mt-2 mt-md-0'} } ) }}
           {{ form_end(callSearch) }}
         </div>

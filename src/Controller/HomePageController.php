@@ -18,7 +18,7 @@ class HomePageController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request)
+    public function index()
     {
         $logRepository = $this->getDoctrine()->getRepository(Log::class);
         $qsoRepository = $this->getDoctrine()->getRepository(QsoRecord::class);
@@ -35,21 +35,7 @@ class HomePageController extends AbstractController
           $logsNotReceived[$dateStr] = $qsoRepository->getLogsNotReceived($dateStr);
         }
 
-        dump($logsNotReceived);
-
-        /* TODO: move below block to a separate route */
-
         $callsignSearchForm = $this->createForm(CallsignSearch::class);
-        $callsignSearchForm->handleRequest($request);
-        if ($callsignSearchForm->isSubmitted() && $callsignSearchForm->isValid()) {
-            $data = $callsignSearchForm->getData();
-            return $this->redirectToRoute(
-              'call_search',
-              array(
-                'callsign' => $data['callsign']
-            )
-          );
-        }
 
         return $this->render('home.html.twig', array(
           'lastMonthStats' => $lastMonthStats,
@@ -65,13 +51,21 @@ class HomePageController extends AbstractController
         ));
     }
 
-    public function getLastMonthStats()
+    /**
+     * @Route("/call_search_handle", name="call_search_handle")
+     */
+    public function handleCallSearch(Request $request)
     {
-        /*
-        SELECT count(*), bands.band_freq FROM `logs`
-        left join bands on bands.bandID=logs.bandID
-        where date > (NOW() - INTERVAL 1 month)
-        group by bands.bandID
-        */
+        $callsignSearchForm = $this->createForm(CallsignSearch::class);
+        $callsignSearchForm->handleRequest($request);
+        if ($callsignSearchForm->isSubmitted() && $callsignSearchForm->isValid()) {
+            $data = $callsignSearchForm->getData();
+            return $this->redirectToRoute(
+              'call_search',
+              array(
+                'callsign' => $data['callsign']
+              )
+            );
+        }
     }
 }
