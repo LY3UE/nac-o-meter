@@ -42,21 +42,6 @@ class LogRepository extends ServiceEntityRepository
         return $_d->modify('-1 month');
     }
 
-    public function findCallsignsWithoutLog()
-    {
-
-        /*  select distinct callsign from qsorecords q
-            LEFT JOIN logs l on q.logID=l.logID
-            where q.callsign like 'LY%'
-            and l.date > '2018-03-01'
-            and callsign not in (
-                SELECT distinct c.callsign FROM logs l
-                LEFT JOIN callsigns c on l.callsignID=c.callsignID
-                where c.callsign like 'LY%'
-                and l.date > '2018-03-01'
-            )
-        */
-    }
     public function findLastCallsigns($maxres)
     {
         return $this->createQueryBuilder('l')
