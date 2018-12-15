@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Log;
 use App\Entity\Round;
+use App\Entity\Message;
 use App\Entity\Callsign;
 use App\Entity\QsoRecord;
 use App\Form\CallsignSearch;
@@ -23,8 +24,10 @@ class HomePageController extends AbstractController
         $logRepository = $this->getDoctrine()->getRepository(Log::class);
         $qsoRepository = $this->getDoctrine()->getRepository(QsoRecord::class);
         $roundRepository = $this->getDoctrine()->getRepository(Round::class);
+        $msgRepository = $this->getDoctrine()->getRepository(Message::class);
 
         $lastCallsigns = $logRepository->findLastCallsigns(5);
+        $lastMsgDate = $msgRepository->getLastEntity()->getDate();
         $lastDate = $logRepository->findLastDate()[1];
         $lastMonthStats = $logRepository->findLastMonthStats($lastDate);
         $lastRounds = $roundRepository->findLastRoundDates($lastDate);
@@ -39,15 +42,12 @@ class HomePageController extends AbstractController
 
         return $this->render('home.html.twig', array(
           'lastMonthStats' => $lastMonthStats,
-          'lastDate' => $lastDate,
+          'lastDate' => $lastMsgDate->format('Y-m-d H:i'),
           'lastRounds' => $lastRounds,
           'lastCallsigns' => $lastCallsigns,
           'logsNotReceived' => $logsNotReceived,
           'callSearch' => $callsignSearchForm->createView(),
-          'currentYear' => \DateTime::createFromFormat(
-            "Y-m-d",
-              $lastDate
-            )->format('Y')
+          'currentYear' => $lastMsgDate->format('Y')
         ));
     }
 
