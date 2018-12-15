@@ -47,7 +47,7 @@ class LogRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('l')
             ->leftJoin('App\Entity\Callsign', 'c', 'WITH', 'c.callsignid=l.callsignid')
             ->select('c.callsign')
-            ->orderBy('l.date', 'DESC')
+            ->orderBy('l.logid', 'DESC')
             ->setMaxResults($maxres)
             ->getQuery()
             ->getResult()
