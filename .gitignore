@@ -1,14 +1,14 @@
 
 ###> symfony/framework-bundle ###
 .env
-/public/bundles/
+/public_html/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/webpack-encore-pack ###
 /node_modules/
-/public/build/
+/public_html/build/
 ###< symfony/webpack-encore-pack ###
 
 ###> symfony/phpunit-bridge ###
@@ -24,3 +24,4 @@
 .idea/*
 ### Ignore LYAC results
 /results/
+
