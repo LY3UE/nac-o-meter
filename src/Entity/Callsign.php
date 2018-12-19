@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Callsign
  *
  * @ORM\Table(name="callsigns", uniqueConstraints={@ORM\UniqueConstraint(name="Pcall", columns={"callsign"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CallsignRepository")
  */
 class Callsign
 {
