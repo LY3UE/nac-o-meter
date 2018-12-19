@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Callsign;
+use App\Entity\Log;
 use App\Form\CallsignSearch;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +17,26 @@ class CallSignInfoController extends AbstractController
     public function callsignSearch($callsign)
     {
         $callsignSearchForm = $this->createForm(CallsignSearch::class);
+        $logRepository = $this->getDoctrine()->getRepository(Log::class);
+        $callsignRepository = $this->getDoctrine()->getRepository(Callsign::class);
+
+        $callsignCheck = $callsignRepository->findBy(array('callsign' => $callsign));
+        if (empty($callsignCheck) && !empty($callsign)) {
+            return $this->redirectToRoute(
+                'call_search',
+                array( 'callsign' => '' )
+            );
+          }
+
+        $lastLogsByCallsign = $logRepository->findLastLogsByCallsign($callsign);
 
         return $this->render(
-              'callsign.html.twig',
-              array(
-            'callSearch' => $callsignSearchForm->createView()
-          )
+            'callsign.html.twig',
+            array(
+                'callsign' => $callsign,
+                'loghistory' => $lastLogsByCallsign,
+                'callSearch' => $callsignSearchForm->createView()
+            )
         );
     }
 }
