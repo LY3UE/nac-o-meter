@@ -17,7 +17,8 @@ class CallsignSearch extends AbstractType
                 'label' => false,
                 'attr' => array(
                     'placeholder' => 'Įveskite šaukinį',
-                    'class' => 'form-control mr-sm-2'
+                    'class' => 'form-control mr-sm-2',
+                    'autofocus' => true
                 )))
             ->add('save', SubmitType::class, array(
                 'label' => 'Pirmyn',
