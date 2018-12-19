@@ -3,9 +3,15 @@
   <div class="card-body">
     <h5 class="card-title">Šių metų rezultatai</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{ currentYear }} m.</h6>
-    <p class="card-text">Informacija ruošiama</p>
-    <a href="#" class="card-link">144MHz</a>
-    <a href="#" class="card-link">432MHz</a>
-    <a href="#" class="card-link">1296MHz</a>
+    <p class="card-text">Nuorodos į LYAC rezultatų puslapį:</p>
+    <div class="list-group">
+
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?144" class="list-group-item list-group-item-action">144MHz</a>
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?432" class="list-group-item list-group-item-action">432MHz</a>
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?1296" class="list-group-item list-group-item-action">1296MHz</a>
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?2G4" class="list-group-item list-group-item-action">2,4 GHz</a>
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?5G7" class="list-group-item list-group-item-action">5,7 GHz</a>
+      <a href="http://www.qrz.lt/lyac/results/?{{ currentYear }}?10G" class="list-group-item list-group-item-action">10 GHz</a>
+    </div>
   </div>
 </div>
