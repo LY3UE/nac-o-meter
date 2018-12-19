@@ -15,7 +15,10 @@
     <h6 class="card-subtitle text-muted">Paskutiniai roboto gauti žurnalai:</h6>
     <p class="card-text text-success">
     {% for c in lastCallsigns  %}
-      {{ c.callsign }}{% if not loop.last %}, {% endif %}
+      <a href="{{ path(
+                  'call_search',
+                  {'callsign': c.callsign}
+                ) }}">{{ c.callsign }}</a>{% if not loop.last %}, {% endif %}
     {% endfor %}</p>
 
   </div>

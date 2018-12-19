@@ -1,0 +1,30 @@
+<div class="card">
+
+  <div class="card-body">
+    <h6 class="card-title">Paskutinės gautos ataskaitos:</h6>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Data</th>
+          <th scope="col">QSO</th>
+          <th scope="col">Turas</th>
+        </tr>
+      </thead>
+      <tbody>
+
+    {% for l in loghistory %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ l.date | date('Y-m-d') }}</td>
+      <td>{{ l.count }}</td>
+      <td>{{ l.band }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+
+</div>

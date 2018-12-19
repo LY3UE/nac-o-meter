@@ -1,11 +1,16 @@
 {% extends "base.html.twig" %}
 
-{% block title %} Pradžia {% endblock %}
+{% block title %} Šaukinio informacija {% endblock %}
 
 {% block left %}
+  {% embed 'callinfo.html.twig' %}
+  {% endembed %}
 
 {% endblock %}
 
 {% block content %}
-
+  {% if callsign is not empty %}
+  {% embed 'loghistory.html.twig' %}
+  {% endembed %}
+  {% endif %}
 {% endblock %}
