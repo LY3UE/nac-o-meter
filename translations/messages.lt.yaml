@@ -1,0 +1,13 @@
+lyac:
+  main: LYAC Pagrindinis
+  
+menu:
+  rounds: Turai
+  results: Rezultatai
+  awards: Pasiekimai
+  reports: Ataskaitos
+  archive: Archyvas
+
+search:
+  placeholder: Įveskite šaukinį
+  submit: Pirmyn
