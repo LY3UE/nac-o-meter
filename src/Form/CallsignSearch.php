@@ -16,12 +16,12 @@ class CallsignSearch extends AbstractType
             ->add('callsign', TextType::class, array(
                 'label' => false,
                 'attr' => array(
-                    'placeholder' => 'Įveskite šaukinį',
+                    'placeholder' => 'searchform.placeholder',
                     'class' => 'form-control mr-sm-2',
                     'autofocus' => true
                 )))
             ->add('save', SubmitType::class, array(
-                'label' => 'Pirmyn',
+                'label' => 'searchform.submit',
                 'attr' => array(
                     'class' => 'btn btn-outline my-2 my-sm-0'
                 )

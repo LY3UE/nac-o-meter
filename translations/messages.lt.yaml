@@ -1,6 +1,6 @@
 lyac:
   main: LYAC Pagrindinis
-  
+
 menu:
   rounds: Turai
   results: Rezultatai
@@ -8,6 +8,6 @@ menu:
   reports: Ataskaitos
   archive: Archyvas
 
-search:
+searchform:
   placeholder: Įveskite šaukinį
   submit: Pirmyn
