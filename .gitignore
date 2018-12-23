@@ -23,5 +23,5 @@
 
 .idea/*
 ### Ignore LYAC results
-/results/
+/results/*.csv
 
