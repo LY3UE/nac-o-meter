@@ -1,10 +1,10 @@
 <div class="card">
 
   <div class="card-body">
-    <h5 class="card-title">Šio mėnesio LYAC informacija</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Paskutinė ataskaita gauta:</h6>
+    <h5 class="card-title">{% trans %}lyac.month.title{% endtrans %}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{% trans %}lyac.month.lastreport{% endtrans %}</h6>
     <p class="card-text">{{ lastDate }}</p>
-    <h6 class="card-subtitle mb-2 text-muted">Dalyvių (ataskaitų) šį mėnesį: </h6>
+    <h6 class="card-subtitle mb-2 text-muted">{% trans %}lyac.month.userstats{% endtrans %}</h6>
     <p class="card-text">
     {% for s in lastMonthStats %}
        {{ s.bandFreq }} -
@@ -12,7 +12,7 @@
     {% endfor %}
 
     </p>
-    <h6 class="card-subtitle text-muted">Paskutiniai roboto gauti žurnalai:</h6>
+    <h6 class="card-subtitle text-muted">{% trans %}lyac.month.lastusers{% endtrans %}</h6>
     <p class="card-text text-success">
     {% for c in lastCallsigns  %}
       <a href="{{ path(
@@ -26,7 +26,7 @@
 <p></p>
 <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Negautos ataskaitos:</h5>
+            <h5 class="card-title">{% trans %}lyac.month.notreceived{% endtrans %}</h5>
 
     {% for date,nolog in logsNotReceived  %}
       {% if nolog is not empty %}

@@ -1,0 +1,22 @@
+lyac:
+  main: LYAC Home
+  results:
+    title: Results of the current year
+    subtitle: Links to the result pages by band:
+  month:
+    title: Current month statistics
+    lastreport: Last log received:
+    userstats: Total of participants (logs):
+    lastusers: Last calls seen by the robot:
+    notreceived: Logs not received (LY only):
+
+menu:
+  rounds: Rounds
+  results: Results
+  awards: Awards
+  reports: Reports
+  archive: Archive
+
+searchform:
+  placeholder: Enter callsign
+  submit: Submit
