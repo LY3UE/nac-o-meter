@@ -16,23 +16,26 @@ class ResultParser
 
     }
 
-    public function listResultFiles()
+    private function getFilePath($year, $band)
     {
-        return $this->getResultFiles();
+        $filename = "${year}_${band}.csv";
+        $files = $this->getFilesByPattern($filename);
+        $iterator = $files->getIterator();
+        $iterator->rewind();
+        return $iterator->current()->getRealPath();
+    }
+
+    private function getCSVReader($filepath) {
+        return Reader::createFromPath($filepath, 'r')
+                    ->setHeaderOffset(0)
+                    ->setDelimiter(';')
+        ;
     }
 
     public function getMonthResultByCall($call,$year,$month,$band)
     {
-        $filename = "${year}_${band}.csv";
-        $finder = new Finder();
-        $files = $finder->files()->in('../results/')->name($filename);
-        $iterator = $finder->getIterator();
-        $iterator->rewind();
-        $filepath = $iterator->current()->getRealPath();
-        $reader = Reader::createFromPath($filepath, 'r')
-                    ->setHeaderOffset(0)
-        ;
-        $reader->setDelimiter(';');
+        $filepath = $this->getFilePath($year,$band);
+        $reader = $this->getCSVReader($filepath);
 
         foreach ($reader as $record) {
                 if ($record[array_keys($record)[0]] == $call) {
@@ -45,7 +48,7 @@ class ResultParser
     public function getAllYears()
     {
         $years = Array();
-        $files = $this->getResultFiles();
+        $files = $this->getFilesByPattern('*.csv');
         foreach ($files as $f) {
             $name = $f->getFileName();
             $years[] = \preg_split('/_/',$name)[0];
@@ -54,9 +57,9 @@ class ResultParser
         return array_unique($years);
     }
 
-    private function getResultFiles()
+    private function getFilesByPattern($pattern)
     {
         $finder = new Finder();
-        return $finder->files()->in('../results/')->name('*.csv');
+        return $finder->files()->in('../results/')->name($pattern);
     }
 }
