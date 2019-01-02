@@ -1,9 +1,10 @@
 <div class="card">
 
   <div class="card-body">
-    <h5 class="card-title">{% trans %}lyac.results.title{% endtrans %}: {{ year }}/{{ band }} </h5>
+    <h5 class="card-title">{% trans %}lyac.results.title{% endtrans %}:</h5>
 
     {% if table is not empty %}
+    <h6 class="card-subtitle mb-2 text-muted">{{ year }}/{{ band }}</h6>
 
     <table class="table table-sm">
     <thead>
