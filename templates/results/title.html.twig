@@ -3,10 +3,19 @@
   <div class="card-body">
     <h5 class="card-title">{% trans %}lyac.results.title{% endtrans %}</h5>
     <p class="card-text">{% trans %}lyac.results.subtitle{% endtrans %}</p>
-    <div class="list-group">
-    {% for year in result_years %}
-      <a href="{{ path( 'results', {'year': year } ) }}" class="list-group-item">{{ year }}</a>
-    {% endfor %}
+      <div class="btn-group-vertical">
+      {% for year, rounds in years %}
+        <div class="btn-group dropright">
+          <button type="button" class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ year }}
+          </button>
+          <div class="dropdown-menu">
+          {% for round in rounds %}
+            <a class="dropdown-item" href="{{ path('results', { 'year': year, 'band': round } )}}">{{ round }} </a>
+          {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>

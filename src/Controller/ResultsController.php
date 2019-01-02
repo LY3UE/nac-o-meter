@@ -13,16 +13,14 @@ class ResultsController extends AbstractController
      * @Route("/results/{year}/{band}", name="results", defaults={"year"="","band"=""})
      */
 
-    public function index()
+    public function index($year, $band)
     {
         $callsignSearchForm = $this->createForm(CallsignSearch::class);
         $results = new ResultParser();
-        $resultYears = $results->getAllYears();
+        $years = $results->getAllYears();
 
-        // $results = $rp->getMonthResultByCall('LY2EN','2017',4,'144');
-        dump($results);
         return $this->render('results/index.html.twig', [
-            'result_years' => $resultYears,
+            'years' => $years,
             'controller_name' => 'ResultsController',
             'callSearch' => $callsignSearchForm->createView(),
         ]);
