@@ -36,6 +36,16 @@ class ResultParser
         ;
     }
 
+    public function getCSVRecords($year, $band)
+    {
+        $fp = $this->getFilePath($year, $band);
+        if ($fp) {
+            return $this->getCSVReader(
+                $fp
+            )->getRecords();
+        }
+    }
+
     public function getMonthResultByCall($call,$year,$month,$band)
     {
         $filepath = $this->getFilePath($year,$band);
