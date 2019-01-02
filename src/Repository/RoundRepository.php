@@ -26,7 +26,7 @@ class RoundRepository extends ServiceEntityRepository
             ->setParameter('since', $beforeDate)
             ->setMaxResults(4)
             ->getQuery()
-            ->getArrayResult()
+            ->getResult()
             ;
     }
 }

@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Round
 {
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="roundID", type="boolean", nullable=false, options={"comment"="Round ID"})
+     * @ORM\Column(name="roundID", type="smallint", nullable=false, options={"comment"="Round ID"})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -46,6 +46,16 @@ class Round
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getRoundId()
+    {
+        return $this->roundid;
     }
 
 }

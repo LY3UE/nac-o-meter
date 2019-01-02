@@ -1,14 +1,14 @@
 lyac:
   main: LYAC Pagrindinis
-  results:
-    title: Šių metų rezultatai
-    subtitle: Nuorodos į LYAC rezultatų puslapį:
+  top5:
+    title: LYAC roboto mėnesio TOP5
+    subtitle: Geriausius rezultatus pareiškė:
   month:
-    title: Šio mėnesio LYAC informacija
+    title: Bendra šio mėnesio LYAC informacija
     lastreport: Paskutinė ataskaita gauta:
-    userstats: Dalyvių (ataskaitų) šį mėnesį:
-    lastusers: Paskutiniai roboto gauti žurnalai:
-    notreceived: Negautos ataskaitos:
+    userstats: Viso dalyvių (ataskaitų) gauta šį mėnesį:
+    lastusers: Paskutiniai ataskaitas robotui pateikę dalyviai:
+    notreceived: Negautos ataskaitos (LY):
 
 menu:
   rounds: Turai

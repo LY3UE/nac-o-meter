@@ -36,9 +36,9 @@
             <li class="nav-item">
             <a class="nav-link" href="{{ path(app.request.get('_route'), app.request.get('_route_params')| merge ({'_locale': 'en'})) }}">EN</a>
             </li>
-            <li class="nav-item">
+            {# waiting translations from LY3UE: <li class="nav-item">
             <a class="nav-link" href="{{ path(app.request.get('_route'), app.request.get('_route_params')| merge ({'_locale': 'ru'})) }}">RU</a>
-            </li>
+            </li> #}
           </ul>
 
           {{ form_start(callSearch, {action:path('call_search_handle')}) }}

@@ -2,8 +2,9 @@
 
 namespace App\Repository;
 
-use App\Entity\QsoRecord;
 use App\Entity\Log;
+use App\Entity\Wwl;
+use App\Entity\QsoRecord;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -48,6 +49,42 @@ class QsoRecordRepository extends ServiceEntityRepository
             ->setParameter('ly', 'LY%')
             ->getQuery()
             ->getResult()
+            ;
+    }
+
+    public function getTopClaimedScores($roundid, $maxresults, $ly = true)
+    {
+        if ($ly) {
+            $condition = 'c.callsign LIKE :ly';
+        }
+        else {
+            $condition = 'c.callsign NOT LIKE :ly';
+        }
+        return $this->createQueryBuilder('q')
+            ->select('c.callsign',
+            '( COALESCE( SUM(
+                        CASE
+                        WHEN QRB(q.gridsquare, w.wwl) > 1
+                        THEN QRB(q.gridsquare, w.wwl)
+                        ELSE 1
+                        END
+                    ), 0 ) +
+                COUNT(
+                    DISTINCT SUBSTRING(q.gridsquare,1,4)
+                    ) * 500
+            ) as total_points' )
+            ->leftJoin('App\Entity\Log', 'l', 'WITH', 'l.logid=q.logid')
+            ->leftJoin('App\Entity\Callsign', 'c', 'WITH', 'l.callsignid=c.callsignid')
+            ->leftJoin('App\Entity\Wwl', 'w', 'WITH', 'l.wwlid=w.wwlid')
+            ->leftJoin('App\Entity\Round', 'r', 'WITH', 'l.date=r.date')
+            ->where('r.roundid = :roundid', $condition)
+            ->setParameter('roundid', $roundid)
+            ->setParameter('ly', 'LY%')
+            ->groupBy('l.logid')
+            ->orderBy('total_points', 'DESC')
+            ->setMaxResults($maxresults)
+            ->getQuery()
+            ->getArrayResult()
             ;
     }
 }

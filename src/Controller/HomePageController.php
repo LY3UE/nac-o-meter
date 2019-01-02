@@ -20,7 +20,7 @@ class HomePageController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(Request $request)
     {
         $logRepository = $this->getDoctrine()->getRepository(Log::class);
         $qsoRepository = $this->getDoctrine()->getRepository(QsoRecord::class);
@@ -34,15 +34,23 @@ class HomePageController extends AbstractController
         $lastRounds = $roundRepository->findLastRoundDates($lastDate);
 
         $logsNotReceived = [];
+        $topFiveScores = [];
+
         foreach ($lastRounds as $lastRound) {
-          $dateStr = $lastRound['date']->format('Y-m-d');
+          $dateStr = $lastRound->getDate()->format('Y-m-d');
           $logsNotReceived[$dateStr] = $qsoRepository->getLogsNotReceived($dateStr);
+          $topFiveScores[$dateStr] = $qsoRepository->getTopClaimedScores(
+            $lastRound->getRoundId(),
+            5,
+            $this->getParameter('kernel.default_locale') == $request->getLocale()
+          );
         }
 
         $callsignSearchForm = $this->createForm(CallsignSearch::class);
 
         return $this->render('home.html.twig', array(
           'lastMonthStats' => $lastMonthStats,
+          'topFiveScores' => $topFiveScores,
           'lastDate' => $lastMsgDate->format('Y-m-d H:i'),
           'lastRounds' => $lastRounds,
           'lastCallsigns' => $lastCallsigns,
