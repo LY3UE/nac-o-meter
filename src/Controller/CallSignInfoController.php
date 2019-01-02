@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CallSignInfoController extends AbstractController
 {
     /**
-     * @Route("/call/{callsign}", name="call_search", defaults={"callsign"=""})
+     * @Route("/call/{callsign}", name="call_search", defaults={"callsign"=""}, requirements={"callsign"=".+"})
      */
     public function callsignSearch($callsign)
     {
