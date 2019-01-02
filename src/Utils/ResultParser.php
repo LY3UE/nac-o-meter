@@ -45,16 +45,41 @@ class ResultParser
         return null;
     }
 
+    private function sortRounds($a,$b)
+    {
+        /* Check if round is microwave (has G in the name) */
+        $ag = preg_match('/G/',$a);
+        $bg = preg_match('/G/',$b);
+
+        /* if both are G, check the first part until G */
+        if ($ag && $bg) {
+            return (
+                (int) preg_split('/G/',$a)[0] >
+                (int) preg_split('/G/',$b)[0]
+            );
+        }
+        /* VUSHF always less than Gigahertz */
+        elseif ($ag || $bg) {
+            return $ag;
+        }
+        else return ($a > $b);
+    }
+
     public function getAllYears()
     {
         $years = Array();
         $files = $this->getFilesByPattern('*.csv');
         foreach ($files as $f) {
             $name = $f->getFileName();
-            $years[] = \preg_split('/_/',$name)[0];
+            list($year, $round, $_) = preg_split('/[_\.]/',$name);
+            $years[$year][] = $round;
+
         }
-        rsort($years);
-        return array_unique($years);
+        foreach ($years as $k => $_) {
+            usort($years[$k],array($this,'sortRounds'));
+        }
+        ksort($years);
+        return array_reverse($years,1);
     }
 
     private function getFilesByPattern($pattern)
