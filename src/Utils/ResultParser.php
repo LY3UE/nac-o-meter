@@ -20,8 +20,12 @@ class ResultParser
     {
         $filename = "${year}_${band}.csv";
         $files = $this->getFilesByPattern($filename);
+        if (!sizeof($files)) {
+            return false;
+        }
         $iterator = $files->getIterator();
         $iterator->rewind();
+
         return $iterator->current()->getRealPath();
     }
 
