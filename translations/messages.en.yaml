@@ -1,13 +1,13 @@
 lyac:
   main: LYAC Home
-  results:
-    title: Results of the current year
-    subtitle: Links to the result pages by band:
+  top5:
+    title: LYAC TOP5 DX claimed scores
+    subtitle: Open Class participants by their claimed results:
   month:
-    title: Current month statistics
-    lastreport: Last log received:
-    userstats: Total of participants (logs):
-    lastusers: Last calls seen by the robot:
+    title: Summary of the current month
+    lastreport: Last log seen by robot on:
+    userstats: Total &#35; of participants (logs received):
+    lastusers: Last calls that have submitted logs:
     notreceived: Logs not received (LY only):
 
 menu:
