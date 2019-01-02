@@ -52,8 +52,14 @@ class QsoRecordRepository extends ServiceEntityRepository
             ;
     }
 
-    public function getTopClaimedScores($roundid, $maxresults)
+    public function getTopClaimedScores($roundid, $maxresults, $ly = true)
     {
+        if ($ly) {
+            $condition = 'c.callsign LIKE :ly';
+        }
+        else {
+            $condition = 'c.callsign NOT LIKE :ly';
+        }
         return $this->createQueryBuilder('q')
             ->select('c.callsign',
             '( COALESCE( SUM(
@@ -71,7 +77,7 @@ class QsoRecordRepository extends ServiceEntityRepository
             ->leftJoin('App\Entity\Callsign', 'c', 'WITH', 'l.callsignid=c.callsignid')
             ->leftJoin('App\Entity\Wwl', 'w', 'WITH', 'l.wwlid=w.wwlid')
             ->leftJoin('App\Entity\Round', 'r', 'WITH', 'l.date=r.date')
-            ->where('r.roundid = :roundid', 'c.callsign LIKE :ly')
+            ->where('r.roundid = :roundid', $condition)
             ->setParameter('roundid', $roundid)
             ->setParameter('ly', 'LY%')
             ->groupBy('l.logid')
