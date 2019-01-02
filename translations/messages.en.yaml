@@ -3,13 +3,25 @@ lyac:
   top5:
     title: LYAC TOP5 DX claimed scores
     subtitle: Open Class participants by their claimed results:
+  results:
+    title: LYAC results
+    subtitle: Final results by year/round:
+    callsign: Callsign
+    total: Total
+    selection: Please select the year and round from the menu on the left
   month:
     title: Summary of the current month
     lastreport: Last log seen by robot on:
     userstats: Total &#35; of participants (logs received):
     lastusers: Last calls that have submitted logs:
     notreceived: Logs not received (LY only):
-
+  callsign:
+    title: Callsign information
+    participant: Participant's
+    information: information
+    notfound:
+      title: Participant not found!
+      message: We do not have any information about this callsign.
 menu:
   rounds: Rounds
   results: Results

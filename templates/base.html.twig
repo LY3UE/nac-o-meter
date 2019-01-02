@@ -4,6 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Simonas Kareiva, LY2EN">
+    <meta name="keywords" content="ham radio, nac, lyac"/>
 
     {% block stylesheets %}
     <!-- Bootstrap CSS -->
@@ -24,10 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link disabled" href="#">{% trans %}menu.rounds{% endtrans %}</a></li>
-            <li class="nav-item"><a class="nav-link disabled" href="#">{% trans %}menu.results{% endtrans %}</a></li>
-            <li class="nav-item"><a class="nav-link disabled" href="#">{% trans %}menu.awards{% endtrans %}</a></li>
-            <li class="nav-item"><a class="nav-link disabled" href="#">{% trans %}menu.reports{% endtrans %}</a></li>
-            <li class="nav-item"><a class="nav-link disabled" href="#">{% trans %}menu.archive{% endtrans %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ path('results') }}">{% trans %}menu.results{% endtrans %}</a></li>
           </ul>
           <ul class="navbar-nav mr-right">
             <li class="nav-item">

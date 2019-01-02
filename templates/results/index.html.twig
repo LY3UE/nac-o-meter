@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Pradžia {% endblock %}
+
+{% block left %}
+  {% embed 'results/title.html.twig' %}
+  {% endembed %}
+{% endblock %}
+
+{% block content %}
+  {% embed 'results/content.html.twig' %}
+  {% endembed %}
+{% endblock %}
