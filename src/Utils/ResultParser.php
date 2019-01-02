@@ -11,9 +11,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ResultParser
 {
-    public function __construct()
-    {
+    private $result_dir;
 
+    public function __construct($root_dir)
+    {
+        $this->result_dir = $root_dir . '/../results/';
     }
 
     private function getFilePath($year, $band)
@@ -99,6 +101,6 @@ class ResultParser
     private function getFilesByPattern($pattern)
     {
         $finder = new Finder();
-        return $finder->files()->in('../results/')->name($pattern);
+        return $finder->files()->in($this->result_dir)->name($pattern);
     }
 }
