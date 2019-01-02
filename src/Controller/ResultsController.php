@@ -21,6 +21,9 @@ class ResultsController extends AbstractController
 
         return $this->render('results/index.html.twig', [
             'years' => $years,
+            'year' => $year,
+            'band' => $band,
+            'table' => $results->getCSVRecords($year, $band),
             'controller_name' => 'ResultsController',
             'callSearch' => $callsignSearchForm->createView(),
         ]);
