@@ -2,12 +2,13 @@
 
   <div class="card-body">
   {% if callsign is empty %}
-    <h5 class="card-title">Dalyvis nerastas!</h5>
-    <p class="card-text">Dalyvio tokiu šaukiniu nėra.</p>
+    <h5 class="card-title">{% trans %}lyac.callsign.notfound.title{% endtrans %}</h5>
+    <p class="card-text">{% trans %}lyac.callsign.notfound.message{% endtrans %}</p>
 
   {% else %}
-    <h5 class="card-title">Dalyvio {{ callsign | upper }} informacija</h5>
-
+    <h5 class="card-title">{% trans %}lyac.callsign.participant{% endtrans %}
+    {{ callsign | upper }}
+    {% trans %}lyac.callsign.information{% endtrans %}</h5>
   {% endif %}
 </div>
 

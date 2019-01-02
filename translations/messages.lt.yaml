@@ -3,13 +3,22 @@ lyac:
   top5:
     title: LYAC roboto mėnesio TOP5
     subtitle: Geriausius rezultatus pareiškė:
+  results:
+    title: LYAC rezultatai
+    subtitle: Išteisėjauti rezultatai pagal metus/turą:
   month:
     title: Bendra šio mėnesio LYAC informacija
     lastreport: Paskutinė ataskaita gauta:
     userstats: Viso dalyvių (ataskaitų) gauta šį mėnesį:
     lastusers: Paskutiniai ataskaitas robotui pateikę dalyviai:
     notreceived: Negautos ataskaitos (LY):
-
+  callsign:
+    title: Šaukinio informacija
+    participant: Dalyvio
+    information: informacija
+    notfound:
+      title: Dalyvis nerastas!
+      message: Dalyvio tokiu šaukiniu nėra.
 menu:
   rounds: Turai
   results: Rezultatai
