@@ -1,0 +1,26 @@
+<div class="card">
+
+  <div class="card-body">
+    <h5 class="card-title">{% trans %}lyac.top5.title{% endtrans %}</h5>
+    <p class="card-text">{% trans %}lyac.top5.subtitle{% endtrans %}</p>
+
+    {% for date, topFive in topFiveScores %}
+    {% if topFive is not empty %}
+      <h6>{{ lastRounds[loop.index-1].name }}
+      <small class="card-subtitle mb-2 text-muted">{{ date |date('Y-m-d') }} </small>
+      </h6>
+      <table class="table table-sm">
+        <tbody>
+          {% for participant in topFive %}
+          <tr>
+            <th scope="row">{{ loop.index }}.</th>
+            <td><a href="{{ path( 'call_search', {'callsign': participant.callsign} ) }}">{{ participant.callsign }}</a></td>
+            <td>{{ participant.total_points }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+      </table>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
