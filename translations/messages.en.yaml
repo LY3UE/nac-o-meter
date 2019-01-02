@@ -6,6 +6,9 @@ lyac:
   results:
     title: LYAC results
     subtitle: Final results by year/round:
+    callsign: Callsign
+    total: Total
+    selection: Please select the year and round from the menu on the left
   month:
     title: Summary of the current month
     lastreport: Last log seen by robot on:

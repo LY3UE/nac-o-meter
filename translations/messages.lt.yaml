@@ -6,6 +6,9 @@ lyac:
   results:
     title: LYAC rezultatai
     subtitle: Išteisėjauti rezultatai pagal metus/turą:
+    callsign: Šaukinys
+    total: Viso
+    selection: Kairiajame meniu pasirinkite metus ir turą
   month:
     title: Bendra šio mėnesio LYAC informacija
     lastreport: Paskutinė ataskaita gauta:
