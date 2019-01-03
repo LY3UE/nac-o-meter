@@ -30,6 +30,35 @@ Because it is a fun way to educate yourself about the science of electromagnetic
 troposphere features, direct and efficient communication, learn new languages and use of the radio equipment or even building
 your own antennae for a particular radio band. 
 
+## About this software
+
+### Requirements
+
+* PHP > 7.1
+* MySQL or MariaDB protocol version 10
+* Yarn > 1.12
+
+### Deployment
+
+#### Production:
+
+```
+APP_ENV=prod composer install --no-dev --optimize-autoloader
+yarn encore production
+```
+
+Upload the following folders to the web server:
+
+* `vendor/`
+* `bin/`
+* `config/`
+* `public_html/`
+* `src/ `
+* `templates/`
+* `translations/`
+
+Do not forget to manually remove Symfony's cache in the `var/cache/prod/` directory.
+
 ## References
 * [1] - http://vushf.dk/
 * [2] - https://www.nrau.net/about-nrau.html
