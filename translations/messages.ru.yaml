@@ -1,0 +1,33 @@
+lyac:
+  main: LYAC Главная
+  top5:
+    title: ТОП5 LYAC робота за месяц
+    subtitle: Лучшие результаты заявили:
+  results:
+    title: LYAC результаты
+    subtitle: Результаты после судейства по годам/туру:
+    callsign: Позывной
+    total: Всего
+    selection: Выберите год и тур в левой стороне меню
+  month:
+    title: Общая LYAC информация за текущий месяц
+    lastreport: Последний отчёт получен:
+    userstats: Общее количество отчётов, полученных за текущий месяц:
+    lastusers: Последние участники, предоставившие отчёты роботу:
+    notreceived: Неполученные отчёты (LY):
+  callsign:
+    title: Информация о позывном
+    participant: Информация об
+    information: участнике
+    notfound:
+      title: Участник не найден!
+      message: Участник с таким позывным не найден.
+menu:
+  rounds: Туры
+  results: Результаты
+  awards: Достижения
+  reports: Отчёты
+  archive: Архив
+searchform:
+  placeholder: Введите позывной
+  submit: Вперёд
