@@ -1,7 +1,7 @@
 lyac:
   main: LYAC Главная
   top5:
-    title: ТОП5 LYAC робота за месяц
+    title: ТОП-5 LYAC робота за месяц
     subtitle: Лучшие результаты заявили:
   results:
     title: LYAC результаты
